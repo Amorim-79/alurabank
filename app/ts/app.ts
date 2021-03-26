@@ -1,5 +1,4 @@
 const negotiationController = new NegotiationController();
 
-document
-    .querySelector('.form')
-    .addEventListener('submit', negotiationController.addNegotiations.bind(negotiationController));
+// Using jQuery
+$('.form').on('submit', negotiationController.addNegotiations.bind(negotiationController));
