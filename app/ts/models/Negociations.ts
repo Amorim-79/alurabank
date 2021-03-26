@@ -3,7 +3,8 @@ class Negociation {
     constructor(
         private _date: Date,
         private _quantity: number,
-        private _value: number
+        private _value: number,
+        private _volume: number = 10,
     ) { }
 
     
@@ -19,6 +20,10 @@ class Negociation {
     
     public get value() : number {
         return this._value;
+    }
+
+    public get volume() : number {
+        return this._volume;
     }
     
     
