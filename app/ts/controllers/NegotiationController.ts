@@ -1,28 +1,30 @@
-class NegociationController {
+class NegotiationController {
     
     private inputDate: HTMLInputElement;
     private inputQuantity: HTMLInputElement;
     private inputValue: HTMLInputElement;
-    private negociations = new NegociationsData();
-    private negociationsView = new NegociationsView('#negociationsView');
+    private negotiations = new NegotiationsData();
+    private negotiationsView = new NegotiationsView('#negotiationsView');
+    private messageView = new MessageView('#messageView');
 
     constructor() {
         this.inputDate = <HTMLInputElement>document.querySelector('#date');
         this.inputQuantity = <HTMLInputElement>document.querySelector('#quantity');
         this.inputValue = <HTMLInputElement>document.querySelector('#value');
-        this.negociationsView.update(this.negociations);
+        this.negotiationsView.update(this.negotiations);
     }
 
-    public addNegociations(event: Event) {
+    public addNegotiations(event: Event) {
         event.preventDefault();
 
-        const negociation = new Negociation(
+        const negotiation = new Negotiation(
             new Date(this.inputDate.value.replace(/-/g, ',')),
             Number(this.inputQuantity.value),
             Number(this.inputValue.value),
         );
 
-        this.negociations.addNegociations(negociation);
-        this.negociationsView.update(this.negociations);
+        this.negotiations.addNegotiations(negotiation);
+        this.messageView.update('The negotiation was successfully created!');
+        this.negotiationsView.update(this.negotiations);
     }
 }

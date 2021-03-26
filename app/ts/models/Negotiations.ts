@@ -1,4 +1,4 @@
-class Negociation {
+class Negotiation {
 
     constructor(
         private _date: Date,
