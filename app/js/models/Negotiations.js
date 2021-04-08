@@ -1,4 +1,4 @@
-class Negotiation {
+export default class Negotiation {
     constructor(_date, _quantity, _value, _volume = 10) {
         this._date = _date;
         this._quantity = _quantity;

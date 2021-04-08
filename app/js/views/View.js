@@ -1,4 +1,4 @@
-class View {
+export default class View {
     constructor(selector) {
         this.element = $(selector);
     }

@@ -1,11 +1,16 @@
-class NegotiationController {
+import Negotiation from "../models/Negotiations";
+import NegotiationsData from "../models/NegotiationsData";
+import MessageView from "../views/MessageView";
+import NegotiationsView from "../views/NegotiationsView";
+
+export default class NegotiationController {
     
     private inputDate: JQuery;
     private inputQuantity: JQuery;
     private inputValue: JQuery;
     private negotiations = new NegotiationsData();
-    private negotiationsView = new Views.NegotiationsView('#negotiationsView');
-    private messageView = new Views.MessageView('#messageView');
+    private negotiationsView = new NegotiationsView('#negotiationsView');
+    private messageView = new MessageView('#messageView');
 
     constructor() {
         this.inputDate = $('#date');

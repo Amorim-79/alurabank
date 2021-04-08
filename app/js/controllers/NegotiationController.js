@@ -1,4 +1,8 @@
-class NegotiationController {
+import Negotiation from "../models/Negotiations";
+import NegotiationsData from "../models/NegotiationsData";
+import MessageView from "../views/MessageView";
+import NegotiationsView from "../views/NegotiationsView";
+export default class NegotiationController {
     constructor() {
         this.negotiations = new NegotiationsData();
         this.negotiationsView = new NegotiationsView('#negotiationsView');

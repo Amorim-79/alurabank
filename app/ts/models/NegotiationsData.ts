@@ -1,4 +1,6 @@
-class NegotiationsData {
+import Negotiation from "./Negotiations";
+
+export default class NegotiationsData {
     private negotiations: Negotiation[] = [];
 
     public addNegotiations(negotiation: Negotiation): void {
