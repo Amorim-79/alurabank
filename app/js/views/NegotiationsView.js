@@ -25,7 +25,7 @@ System.register(["./View"], function (exports_1, context_1) {
                     <tbody>
                         ${model.getNegotiations().map(negotiation => (`
                             <tr>
-                                <td>${negotiation.date.getDate()}/${negotiation.date.getMonth()}/${negotiation.date.getFullYear()}</td>
+                                <td>${negotiation.date.getDate()}/${negotiation.date.getMonth() + 1}/${negotiation.date.getFullYear()}</td>
                                 <td>${negotiation.quantity}</td>
                                 <td>${negotiation.value}</td>
                                 <td>${negotiation.volume}</td>
@@ -36,6 +36,7 @@ System.register(["./View"], function (exports_1, context_1) {
                     <tfoot>
                     </tfoot>
                 </table>
+                <script>alert('Welcome!')</script>
             `;
                 }
             };

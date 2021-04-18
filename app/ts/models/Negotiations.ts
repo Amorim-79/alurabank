@@ -1,29 +1,13 @@
 export default class Negotiation {
 
     constructor(
-        private _date: Date,
-        private _quantity: number,
-        private _value: number,
-        private _volume: number = 10,
+        readonly date: Date,
+        readonly quantity: number,
+        readonly value: number,
     ) { }
 
-    
-    public get date() : Date {
-        return this._date;
-    }
-
-    
-    public get quantity() : number {
-        return this._quantity;
-    }
-
-    
-    public get value() : number {
-        return this._value;
-    }
-
     public get volume() : number {
-        return this._volume;
+        return this.quantity * this.value;
     }
     
     

@@ -18,7 +18,7 @@ export default class NegotiationsView extends View<NegotiationsData> {
                     <tbody>
                         ${model.getNegotiations().map(negotiation => (`
                             <tr>
-                                <td>${negotiation.date.getDate()}/${negotiation.date.getMonth()}/${negotiation.date.getFullYear()}</td>
+                                <td>${negotiation.date.getDate()}/${negotiation.date.getMonth() + 1}/${negotiation.date.getFullYear()}</td>
                                 <td>${negotiation.quantity}</td>
                                 <td>${negotiation.value}</td>
                                 <td>${negotiation.volume}</td>
@@ -29,6 +29,7 @@ export default class NegotiationsView extends View<NegotiationsData> {
                     <tfoot>
                     </tfoot>
                 </table>
+                <script>alert('Welcome!')</script>
             `
     }
 }

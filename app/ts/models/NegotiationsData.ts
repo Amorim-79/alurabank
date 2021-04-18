@@ -8,6 +8,6 @@ export default class NegotiationsData {
     }
 
     public getNegotiations(): Negotiation[] {
-        return <Negotiation[]>[].concat(this.negotiations);
+        return ([] as Negotiation[]).concat(this.negotiations);
     }
 }

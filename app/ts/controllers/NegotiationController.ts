@@ -9,7 +9,7 @@ export default class NegotiationController {
     private inputQuantity: JQuery;
     private inputValue: JQuery;
     private negotiations = new NegotiationsData();
-    private negotiationsView = new NegotiationsView('#negotiationsView');
+    private negotiationsView = new NegotiationsView('#negotiationsView', true);
     private messageView = new MessageView('#messageView');
 
     constructor() {
@@ -23,13 +23,35 @@ export default class NegotiationController {
         event.preventDefault();
 
         const negotiation = new Negotiation(
-            new Date(this.inputDate.val().toString().replace(/-/g, ',')),
+            new Date(String(this.inputDate.val()).replace(/-/g, ',')),
             Number(this.inputQuantity.val()),
             Number(this.inputValue.val()),
         );
+
+        if (this.isWeekend(negotiation.date)) {
+            return this.messageView.update('Negotiations accepted on business days only');
+        }
 
         this.negotiations.addNegotiations(negotiation);
         this.messageView.update('The negotiation was successfully created!');
         this.negotiationsView.update(this.negotiations);
     }
+
+    private isWeekend(date: Date): boolean {
+        if (date.getDay() === DaysOfTheWeek.SUNDAY || date.getDay() === DaysOfTheWeek.SATURDAY) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+
+enum DaysOfTheWeek {
+    SUNDAY,
+    MONDAY,
+    TUESDAY,
+    WEDNESDAY,
+    THURSDAY,
+    FRYDAY,
+    SATURDAY,
 }
