@@ -1,3 +1,4 @@
+import { domInject } from "../helpers/decorators/DomInject.decorator";
 import Negotiation from "../models/Negotiations";
 import NegotiationsData from "../models/NegotiationsData";
 import MessageView from "../views/MessageView";
@@ -5,17 +6,20 @@ import NegotiationsView from "../views/NegotiationsView";
 
 export default class NegotiationController {
     
+    @domInject('#date')
     private inputDate: JQuery;
+
+    @domInject('#quantity')
     private inputQuantity: JQuery;
+
+    @domInject('#value')
     private inputValue: JQuery;
+
     private negotiations = new NegotiationsData();
     private negotiationsView = new NegotiationsView('#negotiationsView', true);
     private messageView = new MessageView('#messageView');
 
     constructor() {
-        this.inputDate = $('#date');
-        this.inputQuantity = $('#quantity');
-        this.inputValue = $('#value');
         this.negotiationsView.update(this.negotiations);
     }
 

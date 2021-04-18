@@ -1,3 +1,5 @@
+import { logExecutionTime } from "../helpers/decorators/Decorators.module";
+
 export default abstract class View<T> {
     private element: JQuery;
     private escape: boolean
@@ -7,6 +9,7 @@ export default abstract class View<T> {
         this.escape = escape;
     }
 
+    @logExecutionTime()
     public update(model: T): void {
         let template = this.template(model);
         if (this.escape) {
