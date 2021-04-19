@@ -1,4 +1,4 @@
-export default class Negotiation {
+export class Negotiation {
 
     constructor(
         readonly date: Date,

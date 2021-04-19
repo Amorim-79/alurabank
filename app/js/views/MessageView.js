@@ -18,7 +18,7 @@ System.register(["./View"], function (exports_1, context_1) {
             `;
                 }
             };
-            exports_1("default", MessageView);
+            exports_1("MessageView", MessageView);
         }
     };
 });

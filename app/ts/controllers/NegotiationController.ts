@@ -1,8 +1,7 @@
-import { domInject } from "../helpers/decorators/DomInject.decorator";
-import Negotiation from "../models/Negotiations";
-import NegotiationsData from "../models/NegotiationsData";
-import MessageView from "../views/MessageView";
-import NegotiationsView from "../views/NegotiationsView";
+import { domInject, throttle } from "../helpers/decorators/Decorators.module";
+import { NegotiationsService } from "../helpers/services/Services.module";
+import { Negotiation, NegotiationsData,} from "../models/Models.module";
+import { MessageView, NegotiationsView } from "../views/Views.module";
 
 export default class NegotiationController {
     
@@ -19,13 +18,21 @@ export default class NegotiationController {
     private negotiationsView = new NegotiationsView('#negotiationsView', true);
     private messageView = new MessageView('#messageView');
 
+    private negotiationsService = new NegotiationsService();
+
     constructor() {
         this.negotiationsView.update(this.negotiations);
     }
 
-    public addNegotiations(event: Event) {
-        event.preventDefault();
+    @throttle()
+    public importNegotiations() {
+        this.negotiationsService.getNegotiaions(this.validateResponse)
+            .then((response) => response.forEach(this.addNegotiations(response)))
+            .catch((error) => this.messageView.update(error));        
+    }
 
+    @throttle()
+    public addNegotiations(event: Event) {
         const negotiation = new Negotiation(
             new Date(String(this.inputDate.val()).replace(/-/g, ',')),
             Number(this.inputQuantity.val()),
@@ -39,6 +46,14 @@ export default class NegotiationController {
         this.negotiations.addNegotiations(negotiation);
         this.messageView.update('The negotiation was successfully created!');
         this.negotiationsView.update(this.negotiations);
+    }
+
+    private validateResponse(response: Response) {
+        if (response.ok) {
+            return response;
+        } else {
+            throw new Error(response.statusText);
+        }
     }
 
     private isWeekend(date: Date): boolean {

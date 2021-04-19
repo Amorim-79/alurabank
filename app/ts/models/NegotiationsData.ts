@@ -1,6 +1,6 @@
-import Negotiation from "./Negotiations";
+import { Negotiation } from "./Models.module";
 
-export default class NegotiationsData {
+export class NegotiationsData {
     private negotiations: Negotiation[] = [];
 
     public addNegotiations(negotiation: Negotiation): void {

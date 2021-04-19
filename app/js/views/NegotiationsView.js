@@ -40,7 +40,7 @@ System.register(["./View"], function (exports_1, context_1) {
             `;
                 }
             };
-            exports_1("default", NegotiationsView);
+            exports_1("NegotiationsView", NegotiationsView);
         }
     };
 });

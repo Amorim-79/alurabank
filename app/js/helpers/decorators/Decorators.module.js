@@ -1,4 +1,4 @@
-System.register(["./DomInject.decorator", "./LogExecutionTime.decorator"], function (exports_1, context_1) {
+System.register(["./DomInject.decorator", "./LogExecutionTime.decorator", "./Throattle.decorator"], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     function exportStar_1(m) {
@@ -15,6 +15,9 @@ System.register(["./DomInject.decorator", "./LogExecutionTime.decorator"], funct
             },
             function (LogExecutionTime_decorator_1_1) {
                 exportStar_1(LogExecutionTime_decorator_1_1);
+            },
+            function (Throattle_decorator_1_1) {
+                exportStar_1(Throattle_decorator_1_1);
             }
         ],
         execute: function () {

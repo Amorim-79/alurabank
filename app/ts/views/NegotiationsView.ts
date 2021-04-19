@@ -1,7 +1,7 @@
-import NegotiationsData from "../models/NegotiationsData";
+import { NegotiationsData } from "../models/Models.module";
 import View from "./View";
 
-export default class NegotiationsView extends View<NegotiationsData> {
+export class NegotiationsView extends View<NegotiationsData> {
 
     template(model: NegotiationsData): string {
         return `
