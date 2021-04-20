@@ -34,7 +34,12 @@ System.register(["../helpers/decorators/Decorators.module", "../helpers/services
                 }
                 importNegotiations() {
                     this.negotiationsService.getNegotiaions(this.validateResponse)
-                        .then((response) => response.forEach(this.addNegotiations(response)))
+                        .then((response) => {
+                        const latestNegotiations = this.negotiations.getNegotiations();
+                        response.filter((negotiation) => {
+                            !latestNegotiations.some((latestNegotiation) => negotiation.isEquals(latestNegotiation));
+                        }).forEach((negotiation) => this.negotiations.addNegotiations(negotiation));
+                    })
                         .catch((error) => this.messageView.update(error));
                 }
                 addNegotiations(event) {

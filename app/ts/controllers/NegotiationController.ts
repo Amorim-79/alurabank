@@ -27,8 +27,15 @@ export default class NegotiationController {
     @throttle()
     public importNegotiations() {
         this.negotiationsService.getNegotiaions(this.validateResponse)
-            .then((response) => response.forEach(this.addNegotiations(response)))
-            .catch((error) => this.messageView.update(error));        
+            .then((response) => {
+                const latestNegotiations = this.negotiations.getNegotiations();
+
+                response.filter((negotiation: Negotiation) => {
+                        !latestNegotiations.some((latestNegotiation) => negotiation.isEquals(latestNegotiation))
+                    }).forEach((negotiation: Negotiation) => this.negotiations.addNegotiations(negotiation));
+
+            })
+            .catch((error) => this.messageView.update(error));    
     }
 
     @throttle()

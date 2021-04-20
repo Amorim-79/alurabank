@@ -14,6 +14,15 @@ System.register([], function (exports_1, context_1) {
                 get volume() {
                     return this.quantity * this.value;
                 }
+                isEquals(object) {
+                    if (this.date === object.date &&
+                        this.quantity === object.quantity &&
+                        this.value === object.value) {
+                        return true;
+                    }
+                    return false;
+                }
+                ;
             };
             exports_1("Negotiation", Negotiation);
         }

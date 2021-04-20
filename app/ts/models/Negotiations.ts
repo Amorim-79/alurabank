@@ -1,4 +1,6 @@
-export class Negotiation {
+import { MyObject } from "./Object.model";
+
+export class Negotiation implements MyObject {
 
     constructor(
         readonly date: Date,
@@ -10,6 +12,14 @@ export class Negotiation {
         return this.quantity * this.value;
     }
     
-    
+    public isEquals(object: Negotiation): boolean {
+        if (this.date === object.date &&
+            this.quantity === object.quantity &&
+            this.value === object.value
+            ) {
+            return true;
+        }
+        return false;
+    };
     
 }
