@@ -5,7 +5,7 @@
         "noEmitOnError": true,
         "noImplicitAny": true,
         "removeComments": true,
-        "module": "System",
+        "module": "CommonJS",
         "strictNullChecks": true,
         "experimentalDecorators": true
     },

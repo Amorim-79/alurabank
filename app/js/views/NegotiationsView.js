@@ -1,17 +1,10 @@
-System.register(["./View"], function (exports_1, context_1) {
-    "use strict";
-    var View_1, NegotiationsView;
-    var __moduleName = context_1 && context_1.id;
-    return {
-        setters: [
-            function (View_1_1) {
-                View_1 = View_1_1;
-            }
-        ],
-        execute: function () {
-            NegotiationsView = class NegotiationsView extends View_1.default {
-                template(model) {
-                    return `
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.NegotiationsView = void 0;
+const View_1 = require("./View");
+class NegotiationsView extends View_1.default {
+    template(model) {
+        return `
                 <table class="table table-hover table-bordered">
                     <thead>
                         <tr>
@@ -38,9 +31,6 @@ System.register(["./View"], function (exports_1, context_1) {
                 </table>
                 <script>alert('Welcome!')</script>
             `;
-                }
-            };
-            exports_1("NegotiationsView", NegotiationsView);
-        }
-    };
-});
+    }
+}
+exports.NegotiationsView = NegotiationsView;

@@ -11,7 +11,7 @@ export function throttle(milliseconds: number = 500) {
             if (event) event.preventDefault();
 
             clearInterval(timer);
-            timer = setTimeout(() => originalMethod.apply(this, args), milliseconds);
+            timer = Number(setTimeout(() => originalMethod.apply(this, args), milliseconds));
         }
         
         return descriptor;

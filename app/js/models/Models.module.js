@@ -1,26 +1,15 @@
-System.register(["./Negotiations", "./NegotiationsData", "./PartialNegotiationsData.model"], function (exports_1, context_1) {
-    "use strict";
-    var __moduleName = context_1 && context_1.id;
-    function exportStar_1(m) {
-        var exports = {};
-        for (var n in m) {
-            if (n !== "default") exports[n] = m[n];
-        }
-        exports_1(exports);
-    }
-    return {
-        setters: [
-            function (Negotiations_1_1) {
-                exportStar_1(Negotiations_1_1);
-            },
-            function (NegotiationsData_1_1) {
-                exportStar_1(NegotiationsData_1_1);
-            },
-            function (PartialNegotiationsData_model_1_1) {
-                exportStar_1(PartialNegotiationsData_model_1_1);
-            }
-        ],
-        execute: function () {
-        }
-    };
-});
+"use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+__exportStar(require("./Negotiations"), exports);
+__exportStar(require("./NegotiationsData"), exports);
+__exportStar(require("./PartialNegotiationsData.model"), exports);

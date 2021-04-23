@@ -1,24 +1,18 @@
-System.register([], function (exports_1, context_1) {
-    "use strict";
-    var __moduleName = context_1 && context_1.id;
-    function throttle(milliseconds = 500) {
-        return function (target, propertyKey, descriptor) {
-            const originalMethod = descriptor.value;
-            let timer = 0;
-            descriptor.value = function (...args) {
-                const event = args[0];
-                if (event)
-                    event.preventDefault();
-                clearInterval(timer);
-                timer = setTimeout(() => originalMethod.apply(this, args), milliseconds);
-            };
-            return descriptor;
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.throttle = void 0;
+function throttle(milliseconds = 500) {
+    return function (target, propertyKey, descriptor) {
+        const originalMethod = descriptor.value;
+        let timer = 0;
+        descriptor.value = function (...args) {
+            const event = args[0];
+            if (event)
+                event.preventDefault();
+            clearInterval(timer);
+            timer = Number(setTimeout(() => originalMethod.apply(this, args), milliseconds));
         };
-    }
-    exports_1("throttle", throttle);
-    return {
-        setters: [],
-        execute: function () {
-        }
+        return descriptor;
     };
-});
+}
+exports.throttle = throttle;

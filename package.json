@@ -7,8 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "compile": "tsc",
     "watch": "tsc -w",
-    "server": "lite-server --baseDir=app",
-    "start": "concurrently \"npm run watch\" \"npm run server\""
+    "bundle": "webpack --config webpack.config.js",
+    "start": "npm run compile && npm run bundle"
   },
   "repository": {
     "type": "git",
@@ -23,10 +23,16 @@
   "homepage": "https://github.com/Amorim-79/alurabank#readme",
   "devDependencies": {
     "@types/jquery": "^3.5.5",
-    "lite-server": "^2.6.1",
-    "typescript": "^4.2.3"
+    "babel-plugin-transform-decorators-legacy": "^1.3.5",
+    "babel-preset-es2017": "^6.24.1",
+    "typescript": "^4.2.3",
+    "webpack-cli": "^4.6.0"
   },
   "dependencies": {
-    "concurrently": "^6.0.2"
+    "@babel/plugin-proposal-decorators": "^7.13.15",
+    "@babel/preset-env": "^7.13.15",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.2.2",
+    "webpack": "^5.35.0"
   }
 }
