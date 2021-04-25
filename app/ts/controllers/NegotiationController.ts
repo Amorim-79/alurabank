@@ -1,5 +1,4 @@
 import { domInject, throttle } from "../helpers/decorators/Decorators.module";
-import { NegotiationsService } from "../helpers/services/Services.module";
 import { Negotiation, NegotiationsData,} from "../models/Models.module";
 import { MessageView, NegotiationsView } from "../views/Views.module";
 
@@ -18,24 +17,30 @@ export default class NegotiationController {
     private negotiationsView = new NegotiationsView('#negotiationsView', true);
     private messageView = new MessageView('#messageView');
 
-    private negotiationsService = new NegotiationsService();
-
     constructor() {
         this.negotiationsView.update(this.negotiations);
     }
 
     @throttle()
     public importNegotiations() {
-        this.negotiationsService.getNegotiaions(this.validateResponse)
-            .then((response) => {
-                const latestNegotiations = this.negotiations.getNegotiations();
+        import(
+            /* webpackChunkName: "negotiaionService" */
+            /* webpackMode: "lazy" */
+            '../helpers/services/Negotiations.service').then((service) => {
+            const negotiaionService = new service.NegotiationsService();
 
-                response.filter((negotiation: Negotiation) => {
-                        !latestNegotiations.some((latestNegotiation) => negotiation.isEquals(latestNegotiation))
-                    }).forEach((negotiation: Negotiation) => this.negotiations.addNegotiations(negotiation));
+            negotiaionService.getNegotiaions(this.validateResponse)
+                .then((response) => {
+                    const latestNegotiations = this.negotiations.getNegotiations();
+    
+                    response.filter((negotiation: Negotiation) => {
+                            !latestNegotiations.some((latestNegotiation) => negotiation.isEquals(latestNegotiation))
+                        }).forEach((negotiation: Negotiation) => this.negotiations.addNegotiations(negotiation));
+    
+                })
+                .catch((error) => this.messageView.update(error));
 
-            })
-            .catch((error) => this.messageView.update(error));    
+        });
     }
 
     @throttle()

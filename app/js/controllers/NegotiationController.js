@@ -7,7 +7,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const Decorators_module_1 = require("../helpers/decorators/Decorators.module");
-const Services_module_1 = require("../helpers/services/Services.module");
 const Models_module_1 = require("../models/Models.module");
 const Views_module_1 = require("../views/Views.module");
 class NegotiationController {
@@ -15,18 +14,20 @@ class NegotiationController {
         this.negotiations = new Models_module_1.NegotiationsData();
         this.negotiationsView = new Views_module_1.NegotiationsView('#negotiationsView', true);
         this.messageView = new Views_module_1.MessageView('#messageView');
-        this.negotiationsService = new Services_module_1.NegotiationsService();
         this.negotiationsView.update(this.negotiations);
     }
     importNegotiations() {
-        this.negotiationsService.getNegotiaions(this.validateResponse)
-            .then((response) => {
-            const latestNegotiations = this.negotiations.getNegotiations();
-            response.filter((negotiation) => {
-                !latestNegotiations.some((latestNegotiation) => negotiation.isEquals(latestNegotiation));
-            }).forEach((negotiation) => this.negotiations.addNegotiations(negotiation));
-        })
-            .catch((error) => this.messageView.update(error));
+        Promise.resolve().then(() => require('../helpers/services/Negotiations.service')).then((service) => {
+            const negotiaionService = new service.NegotiationsService();
+            negotiaionService.getNegotiaions(this.validateResponse)
+                .then((response) => {
+                const latestNegotiations = this.negotiations.getNegotiations();
+                response.filter((negotiation) => {
+                    !latestNegotiations.some((latestNegotiation) => negotiation.isEquals(latestNegotiation));
+                }).forEach((negotiation) => this.negotiations.addNegotiations(negotiation));
+            })
+                .catch((error) => this.messageView.update(error));
+        });
     }
     addNegotiations(event) {
         const negotiation = new Models_module_1.Negotiation(new Date(String(this.inputDate.val()).replace(/-/g, ',')), Number(this.inputQuantity.val()), Number(this.inputValue.val()));

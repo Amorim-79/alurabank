@@ -4,7 +4,7 @@ exports.NegotiationsService = void 0;
 const Models_module_1 = require("../../models/Models.module");
 class NegotiationsService {
     getNegotiaions(handler) {
-        return fetch('http://localhost:8080')
+        return fetch(BASE_URL)
             .then(response => handler(response))
             .then(response => response.json())
             .then((data) => {

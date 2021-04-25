@@ -2,6 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 require("bootstrap/dist/css/bootstrap.css");
 require("../css/styles.css");
+require("bootstrap/js/dist/modal.js");
+console.log($('h1')['modal']);
 const NegotiationController_1 = require("./controllers/NegotiationController");
 const negotiationController = new NegotiationController_1.default();
 $('.form').on('submit', negotiationController.addNegotiations.bind(negotiationController));
