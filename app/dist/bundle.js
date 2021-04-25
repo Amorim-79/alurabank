@@ -16,7 +16,7 @@
   \***********************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("\n\nObject.defineProperty(exports, \"__esModule\", ({\n  value: true\n}));\n\nvar NegotiationController_1 = __webpack_require__(/*! ./controllers/NegotiationController */ \"./app/js/controllers/NegotiationController.js\");\n\nvar negotiationController = new NegotiationController_1[\"default\"]();\n$('.form').on('submit', negotiationController.addNegotiations.bind(negotiationController));\n$('#import-button').on('click', negotiationController.importNegotiations.bind(negotiationController));\n\n//# sourceURL=webpack://alurabank/./app/js/app.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", ({\n  value: true\n}));\n\n__webpack_require__(/*! bootstrap/dist/css/bootstrap.css */ \"./node_modules/bootstrap/dist/css/bootstrap.css\");\n\n__webpack_require__(/*! ../css/styles.css */ \"./app/css/styles.css\");\n\nvar NegotiationController_1 = __webpack_require__(/*! ./controllers/NegotiationController */ \"./app/js/controllers/NegotiationController.js\");\n\nvar negotiationController = new NegotiationController_1[\"default\"]();\n$('.form').on('submit', negotiationController.addNegotiations.bind(negotiationController));\n$('#import-button').on('click', negotiationController.importNegotiations.bind(negotiationController));\n\n//# sourceURL=webpack://alurabank/./app/js/app.js?");
 
 /***/ }),
 
@@ -168,6 +168,26 @@ eval("\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance insta
 
 eval("\n\nvar __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {\n  if (k2 === undefined) k2 = k;\n  Object.defineProperty(o, k2, {\n    enumerable: true,\n    get: function get() {\n      return m[k];\n    }\n  });\n} : function (o, m, k, k2) {\n  if (k2 === undefined) k2 = k;\n  o[k2] = m[k];\n});\n\nvar __exportStar = this && this.__exportStar || function (m, exports) {\n  for (var p in m) {\n    if (p !== \"default\" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);\n  }\n};\n\nObject.defineProperty(exports, \"__esModule\", ({\n  value: true\n}));\n\n__exportStar(__webpack_require__(/*! ./View */ \"./app/js/views/View.js\"), exports);\n\n__exportStar(__webpack_require__(/*! ./MessageView */ \"./app/js/views/MessageView.js\"), exports);\n\n__exportStar(__webpack_require__(/*! ./NegotiationsView */ \"./app/js/views/NegotiationsView.js\"), exports);\n\n//# sourceURL=webpack://alurabank/./app/js/views/Views.module.js?");
 
+/***/ }),
+
+/***/ "./app/css/styles.css":
+/*!****************************!*\
+  !*** ./app/css/styles.css ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://alurabank/./app/css/styles.css?");
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap/dist/css/bootstrap.css":
+/*!*******************************************************!*\
+  !*** ./node_modules/bootstrap/dist/css/bootstrap.css ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://alurabank/./node_modules/bootstrap/dist/css/bootstrap.css?");
+
 /***/ })
 
 /******/ 	});
@@ -195,6 +215,18 @@ eval("\n\nvar __createBinding = this && this.__createBinding || (Object.create ?
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
 /******/ 	
 /************************************************************************/
 /******/ 	

@@ -1,3 +1,6 @@
+import 'bootstrap/dist/css/bootstrap.css';
+import '../css/styles.css';
+
 import NegotiationController from "./controllers/NegotiationController";
 
 const negotiationController = new NegotiationController();
