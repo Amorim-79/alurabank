@@ -9,7 +9,7 @@ const BASE_URL = process.env.NODE_ENV === 'production' ? JSON.stringify('http://
 
 const plugins = [
     new miniCssExtractPlugin({
-        filename: 'styles.css',
+        filename: '[name]-[contenthash].css',
     }),
     new htmlWebpackPlugin({
         filename: 'index.html',
@@ -30,12 +30,9 @@ const plugins = [
 ];
 
 module.exports = {
-    entry: {
-        app: path.resolve(__dirname, 'app', 'js', 'app.js'),
-        vendor: ['jquery', 'bootstrap'],
-    },
+    entry: path.resolve(__dirname, 'app', 'js', 'app.js'),
     output: {
-        filename: 'bundle.js',
+        filename: '[name]-[contenthash].js',
         path: path.resolve(__dirname, 'app', 'dist'),
     },
     mode: process.env.NODE_ENV || 'development',
@@ -87,16 +84,16 @@ module.exports = {
     },
     optimization: {
         splitChunks: {
+            chunks: 'all',
             cacheGroups: {
-                vendor: {
+                defaultVendors: {
                     name: 'vendor',
-                    filename: 'vendor.bundle.js',
-                    test: /[\\/]node_modules[\\/](jquery|bootstrap)[\\/]/,
-                    chunks: 'all',
-                    enforce: true,
-                  }
+                    test: /[\\/]node_modules[\\/]/,
+                    priority: -10,
+                    reuseExistingChunk: true,
+                },
             },
-        },
+          },
         minimizer: [
             `...`,
             new cssMinimizerPlugin(),

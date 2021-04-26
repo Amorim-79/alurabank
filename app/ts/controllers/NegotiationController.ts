@@ -23,10 +23,7 @@ export default class NegotiationController {
 
     @throttle()
     public importNegotiations() {
-        import(
-            /* webpackChunkName: "negotiaionService" */
-            /* webpackMode: "lazy" */
-            '../helpers/services/Negotiations.service').then((service) => {
+        import('../helpers/services/Negotiations.service').then((service) => {
             const negotiaionService = new service.NegotiationsService();
 
             negotiaionService.getNegotiaions(this.validateResponse)
